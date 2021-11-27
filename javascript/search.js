@@ -1,20 +1,17 @@
 let words = document.querySelectorAll(".signWordAll")
 let copyWords = Array.from(words)
-let wordCardsHolder = document.querySelectorAll(".u-repeater.u-repeater-1")
 let allCardsHolder = document.querySelector(".allHolder")
 let input = document.getElementById("searchbar")
 
 let deletedWordCards = []
 
-// let allHolder = document.getElementById("allHolder")
-// let animalTab = document.getElementById("link-tab-0e15")
-// let foodTab = document.getElementById("link-tab-14b7")
-// let timeTab = document.getElementById("link-tab-2917")
-// let peopleTab = document.getElementById("tab-93fc")
 let tabsHolder = document.getElementById("tabsHolder")
 let allTab = document.getElementById("link-tab-0da5")
 let allCategory = document.getElementById("tab-0da5")
 let categoriesHolder = document.getElementsByClassName("u-tab-content")[0]
+
+let videos = document.querySelectorAll(".allHolder .back video")
+// let video = copyWords[0].parentElement.childNodes[1].childNodes[1].childNodes[1].childNodes[3].childNodes[7].childNodes[1]
 
 function searchWord() {
     let inputVal = input.value
@@ -28,19 +25,17 @@ function searchWord() {
             // this card is part of the search
             if (deletedWordCards.includes(elem)) {
                 allCardsHolder.append(elem)
+                videos[i].play()
             }
-            // check if the wordCard exists in deletedWords
-            // if it does, append it in DOM to allCardsHolder
         } else {
             // this card is not part of the search
             deletedWordCards.push(elem)
-            elem.remove() // how to remove the elem only in all category
+            elem.remove()
         }
     }
     
 
-    // whenever you search
-    // check which tab is currently active based on tabsHolder
+    // whenever user searches, check which tab is currently active based on tabsHolder
     // untoggle that active tab
     // toggle the All tab
     for (let i = 0; i < tabsHolder.children.length; i++) {
